@@ -1,5 +1,5 @@
 /** Converts a base 32 string into a Uint8Array */
-function base32ToUint8Array(base32: string) {
+export function base32ToUint8Array(base32: string) {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
   let bits = 0;
   let value = 0;
@@ -32,8 +32,8 @@ function base32ToUint8Array(base32: string) {
  * @param options.timeOffset The time offset in seconds (default: 0)
  * @returns The current TOTP value such as `"321987"`
  */
-export default async function getTotp(
-  token: string,
+export async function getTotp(
+  token: Uint8Array,
   {
     timeStep = 30,
     timeOffset = 0,
@@ -48,9 +48,9 @@ export default async function getTotp(
   );
   new DataView(counterBuffer.buffer).setBigInt64(0, t);
 
-  const key = await window.crypto.subtle.importKey(
+  const key = await globalThis.crypto.subtle.importKey(
     "raw",
-    base32ToUint8Array(token),
+    token,
     { name: "HMAC", hash: "SHA-1" },
     true,
     ["sign", "verify"]
