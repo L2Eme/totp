@@ -1,5 +1,5 @@
 {
-  "name": "@md/totp",
+  "name": "@line100/totp",
   "version": "0.0.0",
   "exports": "./mod.ts",
   "license": "ISC"
