@@ -1,4 +1,4 @@
-# @md/totp
+# @line100/totp
 
 A function to generate TOTP values using a base64 encoded token
 
