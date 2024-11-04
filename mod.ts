@@ -1,5 +1,5 @@
 /** Converts a base 32 string into a Uint8Array */
-export function base32ToUint8Array(base32: string) {
+export function base32ToUint8Array(base32: string): Uint8Array {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
   let bits = 0;
   let value = 0;
